@@ -1,6 +1,6 @@
-package br.com.confidencecambio.javabasico;
+package br.com.confidencecambio.javabasico.application.web.controllers;
 
-import br.com.confidencecambio.javabasico.service.HelloService;
+import br.com.confidencecambio.javabasico.application.service.HelloService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;

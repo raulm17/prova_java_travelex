@@ -1,4 +1,4 @@
-package br.com.confidencecambio.javabasico.service;
+package br.com.confidencecambio.javabasico.application.service;
 
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;

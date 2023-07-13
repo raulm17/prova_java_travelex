@@ -1,6 +1,7 @@
 package br.com.confidencecambio.javabasico.service;
 
 
+import br.com.confidencecambio.javabasico.application.service.HelloService;
 import org.junit.Before;
 import org.junit.Test;
 
