@@ -2,7 +2,6 @@ package br.com.confidencecambio.javabasico.application.web.handlers;
 
 import br.com.confidencecambio.javabasico.core.exceptions.BaseException;
 import br.com.confidencecambio.javabasico.core.models.responses.DResponse;
-import br.com.confidencecambio.javabasico.core.models.responses.InputErrorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.core.Ordered;
@@ -22,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 @Order(Ordered.LOWEST_PRECEDENCE)
@@ -75,8 +75,8 @@ public class GlobalErrorHandler extends ResponseEntityExceptionHandler {
                 Integer.parseInt(
                         messageSource.getMessage("error.input.statuscode", new Object[]{}, Locale.getDefault())
                 );
-        DResponse<InputErrorResponse> response =
-                DResponse.error(Collections.singletonList(new DResponse.Error(code, errorList.toString())));
+        var response =
+                DResponse.error(errorList.stream().map(e -> new DResponse.Error(code, e)).collect(Collectors.toList()));
         headers.setContentType(MediaType.APPLICATION_JSON);
         return handleExceptionInternal(ex, response, headers, HttpStatus.valueOf(statusCode), request);
     }

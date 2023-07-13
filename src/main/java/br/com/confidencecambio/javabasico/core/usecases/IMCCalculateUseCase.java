@@ -8,12 +8,13 @@ import org.slf4j.LoggerFactory;
 
 public class IMCCalculateUseCase {
     private static final Logger logger = LoggerFactory.getLogger(IMCCalculateUseCase.class);
+
     public static IMCResponse execute(IMCRequest request) {
-        logger.debug("Calculating IMC");
+        logger.info("Calculating IMC");
         var imc = request.getWeight() / (request.getHeight() * request.getHeight());
         var classification = IMCClassification.getIMCClassification(imc);
         var message = COMORBIDITY_IS + classification.getRiskOfComorbidity();
-        logger.debug("IMC calculated");
+        logger.info("IMC calculated");
         return new IMCResponse(imc, classification, message);
     }
 
